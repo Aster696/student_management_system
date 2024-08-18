@@ -4,8 +4,8 @@ from courses.models import Courses
 
 # Create your models here.
 class Enrollments(models.Model):
-    student = models.ForeignKey(Students, on_delete=models.CASCADE)
-    course = models.ForeignKey(Courses, on_delete=models.CASCADE)
+    student = models.IntegerField()
+    course = models.IntegerField()
     enrollment_date = models.DateField()
     grade = models.CharField(max_length=2, blank=True, null=True)
 
