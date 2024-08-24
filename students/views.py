@@ -14,14 +14,15 @@ def add_student(request):
 def postStudent(request):
     if request.method == 'POST':
         form = StudentForm(request.POST)
-        try:
-            form.save()
-            messages.success(request, 'Student added successfully!')
-            return redirect('student-list')
-        except Exception as e:
+        if form.is_valid():
+            try:
+                form.save()
+                messages.success(request, 'Student added successfully!')
+                return redirect('student-list')
+            except Exception as e:
                 messages.error(request, f'Error: {str(e)}')
         else:
-            messages.error(request, 'Please correct the errors below.')
+            messages.error(request, form.errors)
     else: 
         form = StudentForm()
     
