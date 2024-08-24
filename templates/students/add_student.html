@@ -1,5 +1,40 @@
 {% extends 'base.html' %}
 
 {% block content %}
-dd
+<div class="container">
+    <form action="{% url 'post-student' %}" method="post">
+        {% csrf_token %}
+    
+        <div class="form-group">
+            <label for="id_student_id">Student ID:</label>
+            <input type="text" name="student_id" maxlength="20" class="form-control" required id="id_student_id">
+        </div>
+    
+        <div class="form-group">
+            <label for="id_first_name">First Name:</label>
+            <input type="text" name="first_name" maxlength="20" class="form-control" required id="id_first_name">
+        </div>
+    
+        <div class="form-group">
+            <label for="id_last_name">Last Name:</label>
+            <input type="text" name="last_name" maxlength="20" class="form-control" required id="id_last_name">
+            {{from.student_id}}
+        </div>
+    
+        <div class="form-group">
+            <label for="id_date_of_birth">Date of Birth:</label>
+            <input type="date" name="date_of_birth" maxlength="20" class="form-control" required id="id_date_of_birth">
+        </div>
+    
+        <div class="form-group">
+            <label for="id_enrollment_date">Enrollment Date:</label>
+            <input type="date" name="enrollment_date" maxlength="20" class="form-control" required id="id_enrollment_date">
+        </div>
+    
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary">Add Student</button>
+        </div>
+    
+    </form>
+</div>
 {% endblock %}
